@@ -1,5 +1,7 @@
 package com.logica.enermil.bo;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -18,7 +20,15 @@ public class Reference implements Serializable {
     private static long serial = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    Integer quantite;
+    Integer energie;
+    Integer matieresGrasse;
+    Integer glucides;
+    Float fibresAlimentaires;
+    Float proteines;
+    Float sel;
     @OneToOne
     Aliment aliment;
 }

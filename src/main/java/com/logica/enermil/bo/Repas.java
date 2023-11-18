@@ -1,5 +1,7 @@
 package com.logica.enermil.bo;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -19,7 +21,9 @@ public class Repas implements Serializable {
     private static long serial = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
+    String name;
     @ManyToMany(mappedBy = "repasList")
     List<Aliment> alimentList;
 }
