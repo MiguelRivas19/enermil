@@ -12,7 +12,6 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tbl_reference")
 public class Reference implements Serializable {
-
     private static long serial = 1L;
 
     @Id
@@ -26,7 +25,7 @@ public class Reference implements Serializable {
     Float fibresAlimentaires;
     Float proteines;
     Float sel;
-    @OneToOne
+    @OneToOne(mappedBy = "reference")
     @JsonIgnore
     Aliment aliment;
 }

@@ -28,12 +28,9 @@ public class Aliment implements Serializable {
     Type type;
     @Enumerated(EnumType.STRING)
     Nutriscore nutriscore;
-    @JoinTable(name = "ALIM_REPAS",
-        joinColumns = @JoinColumn(name = "ALIM_ID", referencedColumnName = "ID"),
-        inverseJoinColumns = @JoinColumn(name = "REPAS_ID", referencedColumnName = "ID")
-    )
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    List<Repas> repasList;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "aliment")
+    @ManyToMany(mappedBy = "aliments")
+    List<Repas> repas;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "REFERENCE_ID")
     Reference reference;
 }

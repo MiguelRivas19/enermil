@@ -20,6 +20,10 @@ public class Repas implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "repas_generator")
     Integer id;
     String name;
-    @ManyToMany(mappedBy = "repasList")
-    List<Aliment> alimentList;
+    @JoinTable(name = "ALIM_REPAS",
+            joinColumns = @JoinColumn(name = "REPAS_ID", referencedColumnName = "ID"),
+            inverseJoinColumns = @JoinColumn(name = "ALIM_ID", referencedColumnName = "ID")
+    )
+    @ManyToMany(cascade = CascadeType.MERGE)
+    List<Aliment> aliments;
 }
