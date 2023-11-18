@@ -24,7 +24,7 @@ public class ReferenceController {
         referenceService.delete(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public void create(@RequestBody Reference Reference) {
         referenceService.save(Reference);
     }

@@ -24,7 +24,7 @@ public class RepasController {
         repasService.delete(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public void create(@RequestBody Repas Repas) {
         repasService.save(Repas);
     }

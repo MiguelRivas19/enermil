@@ -24,7 +24,7 @@ public class AlimentController {
         alimentService.delete(id);
     }
 
-    @PostMapping
+    @PostMapping()
     public void create(@RequestBody Aliment aliment) {
         alimentService.save(aliment);
     }

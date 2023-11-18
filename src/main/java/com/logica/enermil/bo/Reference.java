@@ -1,26 +1,23 @@
 package com.logica.enermil.bo;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Entity
 @Table(name = "tbl_reference")
 public class Reference implements Serializable {
 
     private static long serial = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "reference_generator", sequenceName = "reference_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reference_generator")
     Integer id;
     Integer quantite;
     Integer energie;
@@ -30,5 +27,6 @@ public class Reference implements Serializable {
     Float proteines;
     Float sel;
     @OneToOne
+    @JsonIgnore
     Aliment aliment;
 }
