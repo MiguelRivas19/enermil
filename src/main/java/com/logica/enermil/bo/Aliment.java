@@ -1,5 +1,6 @@
 package com.logica.enermil.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.logica.enermil.enums.Nutriscore;
 import com.logica.enermil.enums.Type;
 import jakarta.persistence.*;
@@ -29,6 +30,7 @@ public class Aliment implements Serializable {
     @Enumerated(EnumType.STRING)
     Nutriscore nutriscore;
     @ManyToMany(mappedBy = "aliments")
+    @JsonIgnore
     List<Repas> repas;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "REFERENCE_ID")
