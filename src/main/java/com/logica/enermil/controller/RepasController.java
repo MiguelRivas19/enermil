@@ -30,6 +30,7 @@ public class RepasController {
     }
 
     @GetMapping("all")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Repas> getAll() {
         return repasService.getAll();
     }
